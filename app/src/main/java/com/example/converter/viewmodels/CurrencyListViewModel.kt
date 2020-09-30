@@ -26,7 +26,7 @@ class CurrencyListViewModel(application: Application) : AndroidViewModel(applica
         get() = _status
 
     init {
-        Toast.makeText(application, "Swipe down to refresh", Toast.LENGTH_LONG).show()
+        refreshCurrencies()
     }
 
     private val _navigateToConverter = MutableLiveData<CurrencyModel>()
@@ -49,12 +49,12 @@ class CurrencyListViewModel(application: Application) : AndroidViewModel(applica
 
     fun refreshCurrencies() {
         uiScope.launch {
-            if (currencies.value == null) {
-                _status.value = CurrenciesApiStatus.LOADING
-            }
+//            if (currencies.value == null) {
+//                _status.value = CurrenciesApiStatus.LOADING
+//            }
             try {
                 currenciesRepository.refreshCurrencies()
-                _status.value = CurrenciesApiStatus.DONE
+//                _status.value = CurrenciesApiStatus.DONE
             } catch (exception: Exception) {
                 _status.value = CurrenciesApiStatus.ERROR
             }
