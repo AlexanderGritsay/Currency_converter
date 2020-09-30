@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.converter.viewmodels.ConverterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toStartOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+
+                <ImageView
+                    android:id="@+id/currencyFlag"
+                    flagImage="@{viewModel.foreignCorrency.charCode}"
+                    android:layout_width="105dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="55dp"
+                    android:scaleType="centerCrop"
+                    tools:layout_height="70dp"
+                    tools:scaleType="centerCrop"
+                    tools:srcCompat="@drawable/huf" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/russianFlag"
+                    android:layout_width="105dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="55dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/rub"
+                    tools:layout_height="70dp"
+                    tools:scaleType="centerCrop"
+                    tools:srcCompat="@drawable/huf" />
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/rubSumEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:ems="10"
+                android:hint="@string/currency_converter_hint"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                app:layout_constraintEnd_toStartOf="@+id/rubCharCode"
+                app:layout_constraintStart_toEndOf="@+id/cardView2" />
+
+            <TextView
+                android:id="@+id/currencySumText"
+                style="@style/CurrencyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:gravity="center_horizontal"
+                android:text="@{String.format(@string/converted_format,viewModel.convertedSum)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/currecyCharCode"
+                app:layout_constraintStart_toStartOf="@+id/rubSumEdit" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{()->viewModel.convertIsClicked()}"
+                app:layout_constraintEnd_toEndOf="@+id/rubSumEdit"
+                app:layout_constraintStart_toStartOf="@+id/rubSumEdit"
+                app:layout_constraintTop_toBottomOf="@+id/rubSumEdit"
+                app:srcCompat="@drawable/arrow_down" />
+
+            <TextView
+                android:id="@+id/rubCharCode"
+                style="@style/CurrencyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="RUB"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rubSumEdit"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/currecyCharCode"
+                style="@style/CurrencyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/currencySumText"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{viewModel.foreignCorrency.charCode}"
+                tools:text="GPB"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

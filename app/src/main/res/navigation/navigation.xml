@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation.xml"
+    app:startDestination="@id/currencyListFragment">
+
+    <fragment
+        android:id="@+id/currencyListFragment"
+        android:name="com.example.converter.ui.CurrencyListFragment"
+        android:label="Currencies">
+        <action
+            android:id="@+id/action_currencyListFragment_to_converterFragment"
+            app:destination="@id/converterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/converterFragment"
+        android:name="com.example.converter.ui.ConverterFragment"
+        android:label="Converter">
+        <argument
+            android:name="currency"
+            app:argType="com.example.converter.domain.CurrencyModel" />
+    </fragment>
+</navigation>

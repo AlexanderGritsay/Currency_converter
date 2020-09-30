@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Converter</string>
+    <string name="currency_course_format">1 %s = %.4f RUB</string>
+    <string name="currency_converter_hint">Введите сумму</string>
+    <string name="swipe_hint">Swipe down to download courses</string>
+    <string name="converted_format">%.2f</string>
+
+</resources>
